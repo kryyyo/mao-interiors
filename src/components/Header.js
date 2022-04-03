@@ -1,8 +1,9 @@
-import {Typography, useMediaQuery, useTheme, Link, IconButton, Box} from "@mui/material";
+import {useMediaQuery, useTheme, IconButton, Box} from "@mui/material";
 import DrawerComponent from "./DrawerComp";
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
 import SearchBar from "./SearchBar";
+import {Link} from "react-router-dom";
 
 
 export default function Header() {
@@ -18,6 +19,7 @@ export default function Header() {
                         sx={{
                             display: "flex",
                             alignItems: "center",
+                            justifyContent: "center",
                             padding: 1,
                             borderBottom: 1,
                             borderColor: 'grey.500',
@@ -46,7 +48,6 @@ export default function Header() {
                                 />
                             </Link>
                         </Box>
-                        
                         <Box 
                             sx={{
                                 marginLeft: "auto",
@@ -58,6 +59,8 @@ export default function Header() {
                                     color: "#000",
                                     marginRight: 1,
                                 }}
+                                as={Link}
+                                to="/login"
                             >
                                 <PersonOutlineIcon />
                             </IconButton>
@@ -99,8 +102,9 @@ export default function Header() {
                                 marginRight: 2
                             }}
                         >
-                            <Link
-                                href="#"
+                            <Box
+                                as={Link}
+                                to="/"
                             >
                                 <img 
                                     src="https://i.imgur.com/cUq4nbL.png" 
@@ -108,7 +112,7 @@ export default function Header() {
                                     width="100px"
                                     height="auto"
                                 />
-                            </Link>
+                            </Box>
                         </Box>
                         <Box
                             sx={{
@@ -124,6 +128,8 @@ export default function Header() {
                                 marginLeft: "auto",
                                 display: "flex",
                             }}
+                            as={Link}
+                            to="/login"
                         >
                             <IconButton
                                 sx={{

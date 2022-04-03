@@ -9,6 +9,7 @@ export default function Footer() {
     return (
         <>
         <Grid
+            className="gridclass"
             container
             p={2}
             sx={{

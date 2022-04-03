@@ -51,7 +51,7 @@ export default function SearchBar() {
             sx={{
                 border: 1,
                 borderColor: 'white',
-                borderRadius: 2
+                borderRadius: 6
             }}
         >
             <SearchIconWrapper>
