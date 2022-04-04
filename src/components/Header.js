@@ -3,8 +3,7 @@ import DrawerComponent from "./DrawerComp";
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
 import SearchBar from "./SearchBar";
-import {Link} from "react-router-dom";
-
+import { Link } from "react-router-dom";
 
 export default function Header() {
     const theme = useTheme(); 
@@ -19,7 +18,6 @@ export default function Header() {
                         sx={{
                             display: "flex",
                             alignItems: "center",
-                            justifyContent: "center",
                             padding: 1,
                             borderBottom: 1,
                             borderColor: 'grey.500',
@@ -38,15 +36,16 @@ export default function Header() {
                                 marginRight: 2
                             }}
                         >
-                            <Link
-                                href="#"
+                            <Box
+                                component={Link}
+                                to="/"
                             >
                                 <img 
                                     src="https://i.imgur.com/cUq4nbL.png" 
                                     alt="logo"
                                     width="64px"
                                 />
-                            </Link>
+                            </Box>
                         </Box>
                         <Box 
                             sx={{
@@ -59,7 +58,7 @@ export default function Header() {
                                     color: "#000",
                                     marginRight: 1,
                                 }}
-                                as={Link}
+                                component={Link}
                                 to="/login"
                             >
                                 <PersonOutlineIcon />
@@ -103,7 +102,7 @@ export default function Header() {
                             }}
                         >
                             <Box
-                                as={Link}
+                                component={Link}
                                 to="/"
                             >
                                 <img 
@@ -128,14 +127,14 @@ export default function Header() {
                                 marginLeft: "auto",
                                 display: "flex",
                             }}
-                            as={Link}
-                            to="/login"
                         >
                             <IconButton
                                 sx={{
                                     color: "#000",
                                     marginRight: 3,
                                 }}
+                                component={Link}
+                                to="/login"
                             >
                                 <PersonOutlineIcon />
                             </IconButton>
