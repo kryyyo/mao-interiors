@@ -1,7 +1,7 @@
-import { Grid, Typography, Button, TextField, Box } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Grid, Typography, Button, TextField, Box, Link } from "@mui/material";
+import { Link as RouterLink } from "react-router-dom";
 
-export default function Login() {
+export default function Register() {
     return (
         <Grid
             container
@@ -23,31 +23,20 @@ export default function Login() {
                 }}
             >
                 <Typography
-                    variant="h6"
+                    variant="h4"
                     component="h1"
                 >
-                    Login to your account
+                    Create a new account!
                 </Typography>
                 <Typography
                     variant="subtitle1"
-                    fontSize="14px"
+                    fontSize="11px"
                 >
-                    Login or join Mao Interiors to checkout! 
+                    <Typography>
+                        Already have an account? <Link component={RouterLink} to="/login" underline="always">Login Here</Link>
+                    </Typography>
+                    
                 </Typography>
-                <Button
-                    sx={{
-                        color: "#000",
-                        border: 1,
-                        borderColor: "#f1f1f1",
-                        borderRadius: 6,
-                        padding: 1,
-                        paddingX: 6
-                    }}
-                    component={Link}
-                    to="/register"
-                >
-                    Create Account
-                </Button>
             </Grid>
             <Grid
                 item
@@ -68,18 +57,51 @@ export default function Login() {
                                 marginBottom: 2
                             }}
                             required
-                            id="login-email"
-                            label="Email Address"
+                            id="reg-firstname"
+                            label="First Name"
+                            type="text"
                             variant="standard"
-                            type="email"
-                            autoComplete="email"
                             autoFocus
                         />
                         <TextField
                             sx={{
                                 marginBottom: 2
                             }}
-                            id="login-password"
+                            required
+                            id="reg-lastname"
+                            label="Last Name"
+                            type="text"
+                            variant="standard"
+                        />
+                        <TextField
+                            sx={{
+                                marginBottom: 2
+                            }}
+                            required
+                            id="reg-number"
+                            label="Mobile Number (eg. 09123456789)"
+                            minLength={11}
+                            maxLength={11}
+                            pattern="[0][9][0-9]{9}" 
+                            type="text"
+                            variant="standard"
+                        />
+                        <TextField
+                            sx={{
+                                marginBottom: 2
+                            }}
+                            required
+                            id="reg-email"
+                            label="Email Address"
+                            type="email"
+                            variant="standard"
+                            autoComplete="email"
+                        />
+                        <TextField
+                            sx={{
+                                marginBottom: 2
+                            }}
+                            id="reg-password"
                             required
                             label="Password"
                             type="password"
@@ -87,7 +109,7 @@ export default function Login() {
                             variant="standard"
                         />
                         <Button
-                            id="login-button"
+                            id="reg-button"
                             type="submit"
                             variant="contained"
                             disableElevation
@@ -100,7 +122,7 @@ export default function Login() {
                                 mt: 2,
                             }}
                         >
-                            Login
+                            Register
                         </Button>
                     </Box>
             </Grid>

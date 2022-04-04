@@ -5,6 +5,7 @@ import './App.css';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import Login from './pages/Login';
+import Register from './pages/Register';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Header />
         <Routes>
           <Route exact path="/login" element={<Login />}/>
+          <Route exact path="/register" element={<Register />}/>
         </Routes>
         <Footer />
       </Container>
