@@ -1,4 +1,4 @@
-import { ListItemIcon, ListItemButton, ListItemText, Typography, } from "@mui/material"
+import {ListItemButton, ListItemText, Typography, } from "@mui/material"
 
 
 export default function SidebarCategory({props}) {

@@ -1,4 +1,4 @@
-import { List, ListItemText, Link, Typography, ListItem, Box, Grid } from "@mui/material";
+import { ListItemText, Link, Typography, ListItem, Grid } from "@mui/material";
 
 export default function FooterList({props}) {
     return (
