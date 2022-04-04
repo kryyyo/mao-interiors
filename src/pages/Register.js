@@ -1,7 +1,101 @@
 import { Grid, Typography, Button, TextField, Box, Link } from "@mui/material";
-import { Link as RouterLink } from "react-router-dom";
+import { useState } from "react";
+import { Link as RouterLink, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 export default function Register() {
+    // const {user} = useContext(UserContext)
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [password2, setPassword2] = useState('');
+    const [mobileNo, setMobileNo] = useState('');  
+    
+    const navigate = useNavigate();
+
+    function registerUser(e) {
+        e.preventDefault()
+        
+        function isNotEmpty(input) {
+            return (input !== '') ? true : false;
+        }
+    
+        if (isNotEmpty(email) && 
+            isNotEmpty(password) &&
+            isNotEmpty(password2) &&
+            isNotEmpty(firstName) && 
+            isNotEmpty(lastName) &&
+            isNotEmpty(mobileNo) &&
+            (mobileNo.length === 11)){
+                if (password === password2){
+                    fetchRegister()
+                } else {
+                    Swal.fire({
+                        title: "Password Mismatch!",
+                        icon: "error", 
+                        text: "Please retype your password."
+                    })
+                }
+        } else {
+            Swal.fire({
+                title: "Missing inputs!",
+                icon: "error", 
+                text: "Please fill in all inputs."
+            })
+            }
+
+        function fetchRegister() {
+            fetch('http://localhost:4000/users/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    firstName: firstName,
+                    lastName: lastName,
+                    email: email,
+                    mobileNo: mobileNo,
+                    password: password
+                })
+            })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data.alert)
+                if (data.alert === `Email already exists`) {
+                    Swal.fire({
+                        title: "Email Already Exists!", 
+                        icon: "error",
+                        text: "Please enter a new email."
+                    })
+
+                } else if (data) {
+                    Swal.fire({
+                        title: "Registration Success!", 
+                        icon: "success",
+                        text: "You have successfully registered!"
+                    })
+    
+                    setEmail('')
+                    setFirstName('')
+                    setLastName('')
+                    setMobileNo('')
+                    setPassword('')
+                    setPassword2('')
+    
+                    navigate("/login")
+
+                } else {
+                    Swal.fire({
+                        title: "Something went wrong!",
+                        icon: "error", 
+                        text: "Please try again."
+                    })
+                }
+            })
+        }
+    }
+
     return (
         <Grid
             container
@@ -51,6 +145,7 @@ export default function Register() {
                             justifyContent: "center",
                         }}
                         component="form"
+                        onSubmit = {(e) => registerUser(e)}
                     >
                         <TextField
                             sx={{
@@ -62,6 +157,8 @@ export default function Register() {
                             type="text"
                             variant="standard"
                             autoFocus
+                            value = {firstName}
+                            onChange = {e => setFirstName(e.target.value)}
                         />
                         <TextField
                             sx={{
@@ -72,6 +169,8 @@ export default function Register() {
                             label="Last Name"
                             type="text"
                             variant="standard"
+                            value = {lastName}
+                            onChange = {e => setLastName(e.target.value)}
                         />
                         <TextField
                             sx={{
@@ -79,12 +178,18 @@ export default function Register() {
                             }}
                             required
                             id="reg-number"
-                            label="Mobile Number (eg. 09123456789)"
-                            minLength={11}
-                            maxLength={11}
-                            pattern="[0][9][0-9]{9}" 
+                            label="Mobile Number"
+                            inputProps={{
+                                inputMode: 'numeric',
+                                pattern: '[0][9][0-9]{9}',
+                                minLength:"11",
+                                maxLength:"11",
+                            }}
                             type="text"
                             variant="standard"
+                            value = {mobileNo}
+                            onChange = {e => setMobileNo(e.target.value)}
+                            helperText="(eg. 09123456789)"
                         />
                         <TextField
                             sx={{
@@ -96,17 +201,39 @@ export default function Register() {
                             type="email"
                             variant="standard"
                             autoComplete="email"
+                            value = {email}
+                            onChange = {e => setEmail(e.target.value)}
+                            helperText="(eg. hello@mail.com)"
                         />
                         <TextField
                             sx={{
                                 marginBottom: 2
                             }}
-                            id="reg-password"
+                            id="reg-password1"
                             required
                             label="Password"
                             type="password"
+                            inputProps={{
+                                minLength:"8",
+                                maxLength:"16",
+                            }}
                             autoComplete="current-password"
                             variant="standard"
+                            value = {password}
+                            onChange = {e => setPassword(e.target.value)}
+                            helperText="(Password must be 8-16 characters)"
+                        />
+                        <TextField
+                            sx={{
+                                marginBottom: 2
+                            }}
+                            id="reg-password2"
+                            required
+                            label="Verify Password"
+                            type="password"
+                            variant="standard"
+                            value = {password2}
+                            onChange = {e => setPassword2(e.target.value)}
                         />
                         <Button
                             id="reg-button"
