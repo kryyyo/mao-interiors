@@ -1,10 +1,11 @@
 import { Grid, Typography, Button, TextField, Box, Link } from "@mui/material";
-import { useState } from "react";
-import { Link as RouterLink, useNavigate } from "react-router-dom";
+import { useState, useContext } from "react";
+import { Link as RouterLink, useNavigate, Navigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import UserContext from "../UserContext";
 
 export default function Register() {
-    // const {user} = useContext(UserContext)
+    const {user} = useContext(UserContext)
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
@@ -97,6 +98,9 @@ export default function Register() {
     }
 
     return (
+        (user.id !== null) ? 
+    	<Navigate to ="/" />
+        :
         <Grid
             container
             justifyContent="center"
