@@ -99,7 +99,7 @@ export default function Register() {
 
     return (
         (user.id !== null) ? 
-    	<Navigate to ="/" />
+    	<Navigate to ="/dashboard" />
         :
         <Grid
             container

@@ -4,8 +4,7 @@ import { Link } from "react-router-dom";
 export default function Error() {
     return (
         <Box
-            ml={36}
-            p={24}
+            m={36}
             sx={{
                 display: "flex",
                 flexDirection: "column",

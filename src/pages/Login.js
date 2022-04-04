@@ -1,10 +1,13 @@
 import { Grid, Typography, Button, TextField, Box } from "@mui/material";
-import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useState, useContext } from "react";
 import UserContext from '../UserContext';
 import Swal from "sweetalert2";
 
+
 export default function Login() {
+    
+    const navigate = useNavigate();
 
     const {user, setUser} = useContext(UserContext);
 	const [email, setEmail] = useState("");
@@ -35,6 +38,8 @@ export default function Login() {
 					icon: "success",
 					text: "Welcome to Mao Interiors!"
 				})
+
+                navigate("/dashboard")
 			} else {
 				Swal.fire({
 					title: "Authentication Failed", 
@@ -58,14 +63,15 @@ export default function Login() {
 		.then(data => {
 			setUser({
 				id: data._id,
-				isAdmin: data.isAdmin
+				isAdmin: data.isAdmin,
+                firstName: data.firstName,
 			})
 		})
 	}
 
     return (
         (user.id !== null) ? 
-    	<Navigate to ="/" />
+    	<Navigate to ="/dashboard" />
     	: 
         <Grid
             container

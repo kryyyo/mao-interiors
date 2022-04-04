@@ -9,6 +9,8 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import { useState, useEffect } from 'react';
 import { UserProvider } from './UserContext';
+import Dashboard from './pages/Dashboard';
+import Logout from './pages/Logout';
 
 function App() {
 
@@ -53,7 +55,9 @@ function App() {
           <Routes>
             <Route exact path="/"/>
             <Route exact path="/login" element={<Login />}/>
+            <Route exact path="/logout" element={<Logout />}/>
             <Route exact path="/register" element={<Register />}/>
+            <Route exact path="/dashboard" element={<Dashboard />}/>
             <Route exact path="*" element={<Error />}/>
           </Routes>
           <Footer />
