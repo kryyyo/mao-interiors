@@ -2,6 +2,7 @@ import * as React from 'react';
 import Button from '@mui/material/Button';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { Grid, Typography, Box } from '@mui/material';
+import { Link as RouterLink } from "react-router-dom";
 
 
 export default function IconLabelButtons({props}) {
@@ -29,6 +30,8 @@ export default function IconLabelButtons({props}) {
                         textTransform: "initial",
                     }}
                     fullWidth
+                    component={RouterLink}
+                    to={props.link}
                 >
                     <Box
                         sx={{

@@ -1,7 +1,11 @@
 import { Button, Box, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import UserContext from "../UserContext";
 
 export default function Error() {
+    const {user} = useContext(UserContext)
+
     return (
         <Box
             m={36}
@@ -22,7 +26,12 @@ export default function Error() {
                 variant="subtitle1"
                 fontSize="14px"
             >
-                Want to go back to the main page? 
+                {
+                    (user.id !== null && user.isAdmin) ? 
+                    `Want to go back to the dashboard?`
+                    :
+                    `Want to go back to the main page?`
+                }
             </Typography>
             <Button
                 sx={{
@@ -36,7 +45,12 @@ export default function Error() {
                 component={Link}
                 to="/"
             >
-                Go back
+                {
+                    (user.id !== null && user.isAdmin) ? 
+                    `Go back to dashboard`
+                    :
+                    `Go back to main page`
+                }
             </Button>
         </Box>
     )

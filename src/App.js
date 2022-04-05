@@ -11,6 +11,7 @@ import { useState, useEffect } from 'react';
 import { UserProvider } from './UserContext';
 import Dashboard from './pages/Dashboard';
 import Logout from './pages/Logout';
+import AdminUser from './pages/AdminUser';
 
 function App() {
 
@@ -61,6 +62,7 @@ function App() {
               <Route exact path="/logout" element={<Logout />}/>
               <Route exact path="/register" element={<Register />}/>
               <Route exact path="/dashboard" element={<Dashboard />}/>
+              <Route exact path="/admin/users" element={<AdminUser />}/>
               <Route exact path="*" element={<Error />}/>
             </Routes>
             <Footer />
