@@ -5,7 +5,7 @@ export default function SidebarCategory({props}) {
     return (
         props.map((category) => {
             return (
-                <ListItemButton>
+                <ListItemButton key={category.key}>
                     <ListItemText>
                         <Typography
                             variant="body2"
