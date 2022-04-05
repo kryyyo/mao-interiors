@@ -21,7 +21,7 @@ export default function Dashboard() {
                 variant="h4"
                 component="h1"
             >
-                Hello {user.firstName}
+                Hello {(user.isAdmin)? "Admin " + user.firstName : user.firstName}
             </Typography>
             <Typography
                 variant="subtitle1"
@@ -32,6 +32,8 @@ export default function Dashboard() {
                 </Typography>
             </Typography>
         </Box>
+        {
+        !(user.isAdmin) ?
         <Grid
             container
             padding={5}
@@ -40,8 +42,19 @@ export default function Dashboard() {
             <DashboardButton props={buttonTexts[0]} />
             <DashboardButton props={buttonTexts[1]} />
             <DashboardButton props={buttonTexts[2]} />
-            <DashboardButton props={buttonTexts[3]} />
         </Grid>
+        
+        :
+        <Grid
+            container
+            padding={5}
+            spacing={2}
+        >
+            <DashboardButton props={buttonTexts[3]} />
+            <DashboardButton props={buttonTexts[4]} />
+            <DashboardButton props={buttonTexts[5]} />
+        </Grid>
+        }
         </>
         :
         <Navigate to ="/login" />

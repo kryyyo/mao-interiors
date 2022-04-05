@@ -11,7 +11,7 @@ export default function IconLabelButtons({props}) {
                 xs={12}
                 sm={6}
                 md={6}
-                lg={3}
+                lg={4}
                 sx={{
                     display: "flex",
                     width: "100%"

@@ -14,7 +14,7 @@ export default function Logout() {
 			isAdmin: null,
             firstName: null,
         })
-    });
+    },[]);
 
     return(
         <Navigate to="/login" />
