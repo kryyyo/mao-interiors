@@ -32,7 +32,7 @@ export default function Login() {
 			if (typeof data.access !== "undefined") {
 				localStorage.setItem('token', data.access)
 				retrieveUserDetails(data.access)
-
+ 
 				Swal.fire({
 					title: "Login Successful",
 					icon: "success",

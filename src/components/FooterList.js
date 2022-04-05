@@ -17,6 +17,7 @@ export default function FooterList({props}) {
                     xs={12}
                     sm={2}
                     marginX={2}
+                    key={list.key}
                 >
                     <ListItemText>
                         <Typography
@@ -32,7 +33,7 @@ export default function FooterList({props}) {
                     {
                         list.items.map((item) => {
                             return (
-                                <ListItem>
+                                <ListItem key={item.key}>
                                     <Link 
                                         href="#" 
                                         underline="hover"

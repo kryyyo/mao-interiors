@@ -6,6 +6,7 @@ import SearchBar from "./SearchBar";
 import { Link } from "react-router-dom";
 
 export default function Header() {
+
     const theme = useTheme(); 
     const isMatch = useMediaQuery(theme.breakpoints.down('sm'));
 

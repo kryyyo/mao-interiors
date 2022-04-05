@@ -46,25 +46,24 @@ function App() {
   }, [])
 
   return (
-    <UserProvider value= {{user, setUser, unsetUser}}>
-      <Router>
-        <Container
-          maxWidth="xl"
-        >
-          <Header />
-          <Routes>
-            <Route exact path="/"/>
-            <Route exact path="/login" element={<Login />}/>
-            <Route exact path="/logout" element={<Logout />}/>
-            <Route exact path="/register" element={<Register />}/>
-            <Route exact path="/dashboard" element={<Dashboard />}/>
-            <Route exact path="*" element={<Error />}/>
-          </Routes>
-          <Footer />
-        </Container>
-      </Router>
-    </UserProvider>
-    
+      <UserProvider value= {{user, setUser, unsetUser}}>
+        <Router>
+          <Container
+            maxWidth="xl"
+          >
+            <Header />
+            <Routes>
+              <Route exact path="/"/>
+              <Route exact path="/login" element={<Login />}/>
+              <Route exact path="/logout" element={<Logout />}/>
+              <Route exact path="/register" element={<Register />}/>
+              <Route exact path="/dashboard" element={<Dashboard />}/>
+              <Route exact path="*" element={<Error />}/>
+            </Routes>
+            <Footer />
+          </Container>
+        </Router>
+      </UserProvider>
   );
 }
 
