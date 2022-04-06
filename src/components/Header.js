@@ -1,7 +1,7 @@
-import {useMediaQuery, useTheme, IconButton, Box} from "@mui/material";
+import {useMediaQuery, useTheme, Box} from "@mui/material";
 import DrawerComponent from "./DrawerComp";
-import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
-import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
+import UserBadge from './UserBadge'
+import ShoppingCartBadge from './ShoppingCartBadge';
 import SearchBar from "./SearchBar";
 import { Link } from "react-router-dom";
 
@@ -54,21 +54,8 @@ export default function Header() {
                                 display: "flex",
                             }}
                         >
-                            <IconButton
-                                sx={{
-                                    color: "#000",
-                                    marginRight: 1,
-                                }}
-                                component={Link}
-                                to="/login"
-                            >
-                                <PersonOutlineIcon />
-                            </IconButton>
-                            <IconButton
-                                sx={{ color: "#000"}}
-                            >
-                                <ShoppingCartCheckoutIcon />
-                            </IconButton>
+                            <UserBadge />
+                            <ShoppingCartBadge />
                         </Box>
                         <Box
                             sx={{
@@ -129,21 +116,8 @@ export default function Header() {
                                 display: "flex",
                             }}
                         >
-                            <IconButton
-                                sx={{
-                                    color: "#000",
-                                    marginRight: 3,
-                                }}
-                                component={Link}
-                                to="/login"
-                            >
-                                <PersonOutlineIcon />
-                            </IconButton>
-                            <IconButton
-                                sx={{ color: "#000"}}
-                            >
-                                <ShoppingCartCheckoutIcon />
-                            </IconButton>
+                            <UserBadge />
+                            <ShoppingCartBadge />
                         </Box>
                     </Box>
                 )
