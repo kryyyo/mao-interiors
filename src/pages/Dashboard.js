@@ -36,7 +36,9 @@ export default function Dashboard() {
         >
             <DashboardButton props={buttonTexts[3]} />
             <DashboardButton props={buttonTexts[4]} />
-            <DashboardButton props={buttonTexts[5]} />
+            <DashboardButton 
+                props={buttonTexts[5]}
+            />
         </Grid>
         }
         </>

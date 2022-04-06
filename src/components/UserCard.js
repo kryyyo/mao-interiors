@@ -6,8 +6,33 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Grid, Link } from '@mui/material';
 import { Link as RouterLink } from "react-router-dom";
+import { useState, useEffect } from 'react';
 
 export default function UserCard() {
+
+    const [user, setUser] = useState('')
+    // LOOP PLEASE
+    useEffect(() => {
+        fetch(`${ process.env.REACT_APP_API_URL }/users/`, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+            }
+        })
+        .then(res => res.json())
+        .then(data => {
+            data.map((user) => {
+                setUser({
+                    firstName: user.firstName,
+                    lastName: user.lastName,
+                    mobileNo: user.mobileNo,
+                    email: user.email,
+                    isAdmin: user.isAdmin,
+                    orders: user.orders
+                })
+            })
+        })
+    }, []);
+
   return (
     <Grid
         item
@@ -20,7 +45,7 @@ export default function UserCard() {
         <Card variant="outlined" sx={{ padding: 2 }}>
         <CardContent>
             <Typography variant="h5" component="div">
-            Collene De Silva
+            {user.firstName} De Silva
             </Typography>
             <Typography 
                 sx={{ 
