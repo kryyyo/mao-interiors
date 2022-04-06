@@ -8,11 +8,9 @@ import { Grid, Link } from '@mui/material';
 import { Link as RouterLink } from "react-router-dom";
 import { useState, useEffect } from 'react';
 import Swal from 'sweetalert2';
-import { useNavigate } from 'react-router-dom';
 
 export default function UserCard() {
     const [users, setUsers] = useState([]);
-    const navigate = useNavigate();
 
     useEffect(() => {
         fetch(`${ process.env.REACT_APP_API_URL }/users/`, {
@@ -24,7 +22,7 @@ export default function UserCard() {
         .then(data => {
             setUsers(data)
         })
-    }, []);
+    });
 
     function toggleAdmin(user) {
         if (!(user.isAdmin)) {
@@ -48,10 +46,7 @@ export default function UserCard() {
                     'All set!',
                     'User is now an admin!',
                     'success'
-                  )
-                  window.location.reload(false)
-                  navigate('/admin/users')
-                  
+                  )  
                 }
               })
         } else {
@@ -76,9 +71,6 @@ export default function UserCard() {
                     'User is now A regular user!',
                     'success'
                   )
-
-                  window.location.reload(false)
-                  navigate('/admin/users')
                 }
               })
         }
@@ -87,6 +79,8 @@ export default function UserCard() {
   return (
     <>
         {
+            
+
             users.map((user)=> {
                 return (  
                     <Grid

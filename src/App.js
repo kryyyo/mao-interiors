@@ -62,8 +62,8 @@ function App() {
               <Route exact path="/logout" element={<Logout />}/>
               <Route exact path="/register" element={<Register />}/>
               <Route exact path="/dashboard" element={<Dashboard />}/>
-              <Route exact path="/admin/users" element={<AdminUser />}/>
               <Route exact path="*" element={<Error />}/>
+              <Route exact path="/admin/users" element={<AdminUser />}/>
             </Routes>
             <Footer />
           </Container>
