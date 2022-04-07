@@ -12,7 +12,10 @@ export default function Dashboard() {
 
     return (
         (user.id !== null) ? 
-        <>
+        <Grid 
+            container
+            alignItems="center"
+        >
         <DashboardHeader />
         {
         !(user.isAdmin) ?
@@ -20,6 +23,7 @@ export default function Dashboard() {
             container
             padding={5}
             spacing={2}
+            mb={5}
         >
             <DashboardButton 
                 props={buttonTexts[0]} 
@@ -33,6 +37,7 @@ export default function Dashboard() {
             container
             padding={5}
             spacing={2}
+            mb={5}
         >
             <DashboardButton props={buttonTexts[3]} />
             <DashboardButton props={buttonTexts[4]} />
@@ -41,7 +46,7 @@ export default function Dashboard() {
             />
         </Grid>
         }
-        </>
+        </Grid>
         :
         <Navigate to ="/login" />
     )

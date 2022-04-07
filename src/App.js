@@ -13,6 +13,7 @@ import Dashboard from './pages/Dashboard';
 import Logout from './pages/Logout';
 import AdminUser from './pages/AdminUser';
 import AdminOrder from './pages/AdminOrder';
+import Box from '@mui/material/Box';
 
 function App() {
 
@@ -55,18 +56,30 @@ function App() {
         <Router>
           <Container
             maxWidth="xl"
+            sx={{
+              minHeight: "100vh",
+              display: "flex",
+              flexDirection: "column",
+            }}
           >
             <Header />
-            <Routes>
-              <Route exact path="/"/>
-              <Route exact path="/login" element={<Login />}/>
-              <Route exact path="/logout" element={<Logout />}/>
-              <Route exact path="/register" element={<Register />}/>
-              <Route exact path="/dashboard" element={<Dashboard />}/>
-              <Route exact path="*" element={<Error />}/>
-              <Route exact path="/admin/users" element={<AdminUser />}/>
-              <Route exact path="/admin/orders" element={<AdminOrder />}/>
-            </Routes>
+            <Box
+              sx={{
+                flexGrow: 1,
+                display: "flex"
+              }}
+            >
+              <Routes>
+                <Route exact path="/"/>
+                <Route exact path="/login" element={<Login />}/>
+                <Route exact path="/logout" element={<Logout />}/>
+                <Route exact path="/register" element={<Register />}/>
+                <Route exact path="/dashboard" element={<Dashboard />}/>
+                <Route exact path="*" element={<Error />}/>
+                <Route exact path="/admin/users" element={<AdminUser />}/>
+                <Route exact path="/admin/orders" element={<AdminOrder />}/>
+              </Routes>
+            </Box>
             <Footer />
           </Container>
         </Router>

@@ -84,13 +84,13 @@ export default function Login() {
                 xs={10}
                 sm={5}
                 lg={4}
-                marginBottom={4}
                 sx={{
                     display: "flex",
                     flexDirection: "column",
                     justifyContent: "center",
                     alignItems: "flex-start",
                 }}
+                marginBottom={4}
             >
                 <Typography
                     variant="h6"

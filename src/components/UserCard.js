@@ -68,7 +68,7 @@ export default function UserCard() {
                     })
                   Swal.fire(
                     'All set!',
-                    'User is now A regular user!',
+                    'User is now a regular user!',
                     'success'
                   )
                 }
@@ -255,7 +255,8 @@ export default function UserCard() {
                                         borderColor: "#990f02",
                                         borderRadius: 6,
                                         padding: 1,
-                                        paddingX: 6
+                                        paddingX: 4,
+                                        height: "3rem",
                                     }}
                                     onClick={() => toggleAdmin(user)}
                                 >
@@ -269,7 +270,8 @@ export default function UserCard() {
                                         borderColor: "#4b5320",
                                         borderRadius: 6,
                                         padding: 1,
-                                        paddingX: 6
+                                        paddingX: 4,
+                                        height: "3rem",
                                     }}
                                     onClick={() => toggleAdmin(user)}
                                 >
