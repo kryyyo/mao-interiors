@@ -3,6 +3,7 @@ import CardTypography from "./CardTypography"
 import CardTypography1 from "./CardTypography1"
 import CommonButton from "./CommonButton"
 import { useEffect, useState } from "react"
+import Swal from "sweetalert2"
 
 export default function OrderCard() {
 
@@ -18,7 +19,86 @@ export default function OrderCard() {
         .then(data => {
             setOrders(data)
         })
-    },[]);
+    });
+
+    function toggleComplete(order) {
+        if (order.status === "Purchased") {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "Order will be completed after this",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#4b5320',
+                cancelButtonColor: '#990f02',
+                confirmButtonText: 'Yes, complete order!'
+              }).then((result) => {
+                if (result.isConfirmed) {
+                    fetch(`${ process.env.REACT_APP_API_URL }/users/orders/${order._id}`,{
+                        method: 'PUT',
+                        headers: {
+                            Authorization: `Bearer ${localStorage.getItem('token')}`
+                        },
+                    })
+                  Swal.fire(
+                    'All set!',
+                    'Order is now completed!',
+                    'success'
+                  )
+                }
+              })
+        } else {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "Order will be pending after this",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#4b5320',
+                cancelButtonColor: '#990f02',
+                confirmButtonText: 'Yes, undo complete!'
+              }).then((result) => {
+                if (result.isConfirmed) {
+                    fetch(`${ process.env.REACT_APP_API_URL }/users/orders/${order._id}`,{
+                        method: 'PUT',
+                        headers: {
+                            Authorization: `Bearer ${localStorage.getItem('token')}`
+                        },
+                    })
+                  Swal.fire(
+                    'All set!',
+                    'Order is now pending!',
+                    'success'
+                  )
+                }
+              })
+        }
+    }
+
+    function deleteOrder(order) {
+        
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "Order will be deleted and cannot be retrieved!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#990f02',
+            cancelButtonColor: '#4b5320',
+            confirmButtonText: 'Yes, delete!'
+            }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`${ process.env.REACT_APP_API_URL }/users/orders/${order._id}`,{
+                    method: 'DELETE',
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem('token')}`
+                    },
+                })
+                Swal.fire(
+                'All set!',
+                'Order deleted!',
+                'success'
+                )
+            }
+            })
+    }
 
     return (
         <>
@@ -67,12 +147,18 @@ export default function OrderCard() {
                                     <CardTypography1 props={{subtitle: "Mobile No:", content: order.deliveryAddress.mobileNo}} />
                                     <CardTypography1 props={{subtitle: "Address", content: order.deliveryAddress.address}} />
                                 </Box>
-
                         </CardContent>
                         <CardActions>
                             <Grid container spacing={1}>
-                                <Grid item xs={12}><CommonButton props={{name: "Complete Order", color: "#4b5320"}} /></Grid>
-                                <Grid item xs={12}><CommonButton props={{name: "Delete Order", color: "#990f02"}} /></Grid>
+                                <Grid item xs={12}>
+                                    {
+                                        order.status === "Purchased" ?
+                                        <CommonButton props={{name: "Complete Order", color: "#4b5320", onClick: () => toggleComplete(order)}} />
+                                        :
+                                        <CommonButton props={{name: "Undo Complete", color: "#990f02", onClick: () => toggleComplete(order)}} />
+                                    }
+                                </Grid>
+                                <Grid item xs={12}><CommonButton props={{name: "Delete Order", color: "#990f02", onClick: () => deleteOrder(order)}} /></Grid>
                             </Grid>
                         </CardActions>
                         </Card>
