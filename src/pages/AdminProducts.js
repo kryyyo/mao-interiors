@@ -1,4 +1,4 @@
-import { Grid } from "@mui/material";
+import { Grid, Button } from "@mui/material";
 import { Navigate } from "react-router-dom";
 import BackButton from "../components/BackButton";
 import DashboardHeader from "../components/DashboardHeader";
@@ -16,6 +16,22 @@ export default function AdminProducts() {
                 <>
                 <Grid item xs={1}><BackButton props={{link: "/dashboard"}}/></Grid>
                 <Grid item xs={12}><DashboardHeader /></Grid>
+                <Grid item xs={12} sm={6} md={4} lg={3} paddingX={5}>
+                        <Button
+                            variant="contained"
+                            disableElevation
+                            sx={{
+                                color: "#f1f1f1",
+                                backgroundColor: "#000",
+                                borderRadius: 6,
+                                padding: 1,
+                                paddingX: 6,
+                                mt: 2,
+                            }}
+                        >
+                            Add Products
+                        </Button>
+                </Grid>
                 <Grid
                     item
                     xs={12}
