@@ -12,6 +12,7 @@ import { UserProvider } from './UserContext';
 import Dashboard from './pages/Dashboard';
 import Logout from './pages/Logout';
 import AdminUser from './pages/AdminUser';
+import AdminOrder from './pages/AdminOrder';
 
 function App() {
 
@@ -64,6 +65,7 @@ function App() {
               <Route exact path="/dashboard" element={<Dashboard />}/>
               <Route exact path="*" element={<Error />}/>
               <Route exact path="/admin/users" element={<AdminUser />}/>
+              <Route exact path="/admin/orders" element={<AdminOrder />}/>
             </Routes>
             <Footer />
           </Container>

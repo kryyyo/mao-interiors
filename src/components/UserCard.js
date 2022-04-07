@@ -46,7 +46,7 @@ export default function UserCard() {
                     'All set!',
                     'User is now an admin!',
                     'success'
-                  )  
+                  )
                 }
               })
         } else {
@@ -79,8 +79,6 @@ export default function UserCard() {
   return (
     <>
         {
-            
-
             users.map((user)=> {
                 return (  
                     <Grid
