@@ -32,7 +32,7 @@ export default function OrderCard() {
                         md={12}
                         lg={6}
                         xl={6}
-                        key="12121"
+                        key={order._id}
                     >
                         <Card variant="outlined" sx={{ padding: 2 }}>
                         <CardContent>
@@ -45,26 +45,27 @@ export default function OrderCard() {
                             <CardTypography props={{title: "Status:", content: order.status}} />
                             <CardTypography props={{title: "Products:"}} />
                                 <Box sx={{ overflow: 'auto', height: "4rem"}}>
-                                    <Box mb={1}>
-                                        <CardTypography1 props={{subtitle: "ID", content: "12312312"}} />
-                                        <CardTypography1 props={{subtitle: "Quantity", content: "1"}} />
-                                        <CardTypography1 props={{subtitle: "Unit Price", content: "123"}} />
-                                    </Box>
-                                    <Box mb={1}>
-                                        <CardTypography1 props={{subtitle: "ID", content: "12312312"}} />
-                                        <CardTypography1 props={{subtitle: "Quantity", content: "1"}} />
-                                        <CardTypography1 props={{subtitle: "Unit Price", content: "123"}} />
-                                    </Box>
+                                    {
+                                        order.products.map((product) => {
+                                            return (
+                                                <Box mb={1} key={product.productId}>
+                                                    <CardTypography1 props={{subtitle: "ID", content: product.productId}} />
+                                                    <CardTypography1 props={{subtitle: "Quantity", content: product.quantity}} />
+                                                    <CardTypography1 props={{subtitle: "Unit Price", content: product.unitPrice}} />
+                                                </Box>
+                                            )
+                                        })
+                                    }
                                 </Box>
                                 
                             <CardTypography props={{title: "Total Price:", content: order.totalPrice}} />
                             <CardTypography props={{title: "Mode of Payment:", content: order.modeOfPayment}} />
                             <CardTypography props={{title: "Delivery Address"}} />
                                 <Box mb={1} sx={{ overflow: 'auto', height: "5rem"}}>
-                                    <CardTypography1 props={{subtitle: "First Name:", content: "Ako"}} />
-                                    <CardTypography1 props={{subtitle: "Last Name:", content: "Si Collene"}} />
-                                    <CardTypography1 props={{subtitle: "Mobile No:", content: "093737373"}} />
-                                    <CardTypography1 props={{subtitle: "Address", content: "Dyan lang"}} />
+                                    <CardTypography1 props={{subtitle: "First Name:", content: order.deliveryAddress.firstName}} />
+                                    <CardTypography1 props={{subtitle: "Last Name:", content: order.deliveryAddress.lastName}} />
+                                    <CardTypography1 props={{subtitle: "Mobile No:", content: order.deliveryAddress.mobileNo}} />
+                                    <CardTypography1 props={{subtitle: "Address", content: order.deliveryAddress.address}} />
                                 </Box>
 
                         </CardContent>

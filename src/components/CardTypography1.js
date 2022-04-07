@@ -31,7 +31,7 @@ export default function CardTypography1({props}) {
                         sx={{
                             display: "flex",
                         }}
-                        ml={3}
+                        ml={6}
                     >
                         <Typography variant="body2" sx={{ overflow: 'auto' }}>{props.content}</Typography>
                     </Grid>
