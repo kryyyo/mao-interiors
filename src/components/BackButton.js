@@ -4,14 +4,13 @@ import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { Link } from "react-router-dom";
-import { Typography } from '@mui/material';
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   '& .MuiBadge-badge': {
   },
 }));
 
-export default function BackButton() {
+export default function BackButton({props}) {
   return (
     <IconButton
         sx={{
@@ -19,7 +18,7 @@ export default function BackButton() {
             marginRight: 1,
         }}
         component={Link}
-        to="/dashboard"
+        to={props.link}
     >
         <StyledBadge color="primary">
             <ArrowBackIcon />

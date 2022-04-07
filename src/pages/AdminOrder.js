@@ -13,19 +13,19 @@ export default function AdminOrder() {
         (user.id !== null) ?
         <Grid container>
             {(user.isAdmin) ?
-            <>
-            <Grid item xs={1}><BackButton /></Grid>
-            <Grid item xs={12}><DashboardHeader /></Grid>
-            <Grid
-                item
-                xs={12}
-                container
-                padding={5}
-                spacing={2}
-            >
-                <OrderCard />
-            </Grid>
-            </>
+                <>
+                <Grid item xs={1}><BackButton props={{link: "/dashboard"}}/></Grid>
+                <Grid item xs={12}><DashboardHeader /></Grid>
+                <Grid
+                    item
+                    xs={12}
+                    container
+                    padding={5}
+                    spacing={2}
+                >
+                    <OrderCard />
+                </Grid>
+                </>
             :
             <Navigate to ="/dashboard" />}
         </Grid>

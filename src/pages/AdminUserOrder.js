@@ -1,12 +1,12 @@
+import { Grid } from "@mui/material";
+import { Navigate } from "react-router-dom";
+import BackButton from "../components/BackButton";
 import DashboardHeader from "../components/DashboardHeader";
 import UserContext from "../UserContext";
 import { useContext } from "react";
-import { Navigate } from "react-router-dom";
-import UserCard from "../components/UserCard";
-import { Grid } from "@mui/material";
-import BackButton from "../components/BackButton";
+import OrderCardUser from "../components/OrderCardUser";
 
-export default function AdminUser() {
+export default function AdminUserOrder() {
     const {user} = useContext(UserContext)
 
     return (
@@ -14,7 +14,7 @@ export default function AdminUser() {
         <Grid container>
             {(user.isAdmin) ?
                 <>
-                <Grid item xs={1}><BackButton props={{link: "/dashboard"}}/></Grid>
+                <Grid item xs={1}><BackButton props={{link: "/admin/users"}}/></Grid>
                 <Grid item xs={12}><DashboardHeader /></Grid>
                 <Grid
                     item
@@ -23,7 +23,7 @@ export default function AdminUser() {
                     padding={5}
                     spacing={2}
                 >
-                    <UserCard />
+                    <OrderCardUser />
                 </Grid>
                 </>
             :

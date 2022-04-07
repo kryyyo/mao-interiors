@@ -12,6 +12,7 @@ import { UserProvider } from './UserContext';
 import Dashboard from './pages/Dashboard';
 import Logout from './pages/Logout';
 import AdminUser from './pages/AdminUser';
+import AdminUserOrder from './pages/AdminUserOrder';
 import AdminOrder from './pages/AdminOrder';
 import Box from '@mui/material/Box';
 
@@ -77,7 +78,9 @@ function App() {
                 <Route exact path="/dashboard" element={<Dashboard />}/>
                 <Route exact path="*" element={<Error />}/>
                 <Route exact path="/admin/users" element={<AdminUser />}/>
+                <Route exact path="/admin/users/:userId" element={<AdminUserOrder />}/>
                 <Route exact path="/admin/orders" element={<AdminOrder />}/>
+                
               </Routes>
             </Box>
             <Footer />
