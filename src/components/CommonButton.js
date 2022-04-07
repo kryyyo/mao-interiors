@@ -11,6 +11,7 @@ export default function CommonButton({props}) {
                 padding: 1,
                 paddingX: 6,
                 width: "100%",
+                marginBottom: 1,
             }}
             onClick={props.onClick}
         >
