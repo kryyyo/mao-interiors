@@ -28,10 +28,10 @@ export default function OrderCard() {
                     <Grid
                         item
                         xs={12}
-                        sm={6}
-                        md={6}
-                        lg={4}
-                        xl={4}
+                        sm={12}
+                        md={12}
+                        lg={6}
+                        xl={6}
                         key="12121"
                     >
                         <Card variant="outlined" sx={{ padding: 2 }}>

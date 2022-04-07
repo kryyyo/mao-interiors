@@ -11,22 +11,24 @@ export default function AdminUser() {
 
     return (
         (user.id !== null) ?
-        <>
+        <Grid container>
             {(user.isAdmin) ?
-            <>
-                <BackButton />
-                <DashboardHeader />
+                <>
+                <Grid item xs={1}><BackButton /></Grid>
+                <Grid item xs={12}><DashboardHeader /></Grid>
                 <Grid
+                    item
+                    xs={12}
                     container
                     padding={5}
                     spacing={2}
                 >
                     <UserCard />
                 </Grid>
-            </>
+                </>
             :
             <Navigate to ="/dashboard" />}
-        </>
+        </Grid>
         :
         <Navigate to ="/login" />
     )
