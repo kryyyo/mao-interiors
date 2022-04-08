@@ -143,7 +143,7 @@ export default function AdminProducts() {
                                         marginBottom: 2
                                     }}
                                     required
-                                    id="reg-productName"
+                                    id="reg-name"
                                     label="Product Name"
                                     type="text"
                                     variant="standard"
