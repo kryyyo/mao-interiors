@@ -15,6 +15,7 @@ import AdminUser from './pages/AdminUser';
 import AdminUserOrder from './pages/AdminUserOrder';
 import AdminOrder from './pages/AdminOrder';
 import AdminProducts from './pages/AdminProducts';
+import AddProduct from './pages/AddProduct';
 import Box from '@mui/material/Box';
 
 function App() {
@@ -82,6 +83,7 @@ function App() {
                 <Route exact path="/admin/users/:userId" element={<AdminUserOrder />}/>
                 <Route exact path="/admin/orders" element={<AdminOrder />}/>
                 <Route exact path="/admin/products" element={<AdminProducts />}/>
+                <Route exact path="/admin/products/add" element={<AddProduct />}/>
               </Routes>
             </Box>
             <Footer />

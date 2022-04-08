@@ -62,7 +62,7 @@ export default function Register() {
             })
             .then(res => res.json())
             .then(data => {
-                console.log(data.alert)
+                
                 if (data.alert === `Email already exists`) {
                     Swal.fire({
                         title: "Email Already Exists!", 

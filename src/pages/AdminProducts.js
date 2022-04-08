@@ -1,5 +1,5 @@
 import { Grid, Button } from "@mui/material";
-import { Navigate } from "react-router-dom";
+import { Navigate, Link } from "react-router-dom";
 import BackButton from "../components/BackButton";
 import DashboardHeader from "../components/DashboardHeader";
 import UserContext from "../UserContext";
@@ -28,6 +28,8 @@ export default function AdminProducts() {
                                 paddingX: 6,
                                 mt: 2,
                             }}
+                            component={Link}
+                            to="/admin/products/add"
                         >
                             Add Products
                         </Button>
