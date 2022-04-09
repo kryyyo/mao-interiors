@@ -29,7 +29,7 @@ export default function AdminProducts() {
                                 mt: 2,
                             }}
                             component={Link}
-                            to="/admin/products/add"
+                            to="add"
                         >
                             Add Products
                         </Button>

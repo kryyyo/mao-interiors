@@ -4,9 +4,9 @@ import BackButton from "../components/BackButton";
 import DashboardHeader from "../components/DashboardHeader";
 import UserContext from "../UserContext";
 import { useContext } from "react";
-import OrderCardUser from "../components/OrderCardUser";
+import EditProductCard from "../components/EditProductCard";
 
-export default function AdminUserOrder() {
+export default function EditProduct() {
     const {user} = useContext(UserContext)
 
     return (
@@ -14,7 +14,7 @@ export default function AdminUserOrder() {
         <Grid container>
             {(user.isAdmin) ?
                 <>
-                <Grid item xs={1}><BackButton props={{link: "/dashboard/admin/users"}}/></Grid>
+                <Grid item xs={1}><BackButton props={{link: "/dashboard/admin/products"}}/></Grid>
                 <Grid item xs={12}><DashboardHeader /></Grid>
                 <Grid
                     item
@@ -23,7 +23,7 @@ export default function AdminUserOrder() {
                     padding={5}
                     spacing={2}
                 >
-                    <OrderCardUser />
+                    <EditProductCard />
                 </Grid>
                 </>
             :

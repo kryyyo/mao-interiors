@@ -17,17 +17,17 @@ const buttonTexts = [
     {
         title: "Products",
         subtitle: "Manage your products",
-        link: "/admin/products",
+        link: "admin/products",
     },
     {
         title: "Orders",
         subtitle: "Manage your orders",
-        link: "/admin/orders",
+        link: "admin/orders",
     },
     {
         title: "Users",
         subtitle: "Manage users",
-        link: "/admin/users",
+        link: "admin/users",
     },
 ]
 

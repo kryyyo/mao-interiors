@@ -34,7 +34,7 @@ export default function AdminProducts() {
             isNotEmpty(stocks) &&
             isNotEmpty(imageURL) &&
             isNotEmpty(imageRoomURL)){
-               addProduct()
+               proceedAdd()
         } else {
             Swal.fire({
                 title: "Missing inputs!",
@@ -43,7 +43,7 @@ export default function AdminProducts() {
             })
             }
 
-        function addProduct() {
+        function proceedAdd() {
             fetch(`${ process.env.REACT_APP_API_URL }/products/`, {
                 method: 'POST',
                 headers: {
@@ -104,7 +104,7 @@ export default function AdminProducts() {
         <Grid container>
             {(user.isAdmin) ?
                 <>
-                <Grid item xs={1}><BackButton props={{link: "/admin/products"}}/></Grid>
+                <Grid item xs={1}><BackButton props={{link: "/dashboard/admin/products"}}/></Grid>
                 <Grid item xs={12}><DashboardHeader /></Grid>
                 <Grid
                     item
@@ -165,7 +165,7 @@ export default function AdminProducts() {
                                     value = {description}
                                     onChange = {e => setDescription(e.target.value)}
                                 />
-                                <Grid container xs={12} spacing={1} justifyContent="center" alignItems="center">
+                                <Grid container spacing={1} justifyContent="center" alignItems="center">
                                     <Grid item xs={6}>
                                         <FormControl fullWidth sx={{ marginRight: 5}}>
                                             <InputLabel id="reg-category">Category</InputLabel>
@@ -193,7 +193,7 @@ export default function AdminProducts() {
 
                                     <Grid item xs={6}>
                                         <FormControl fullWidth>
-                                            <InputLabel id="reg-category">Room</InputLabel>
+                                            <InputLabel id="reg-room">Room</InputLabel>
                                             <Select
                                                 labelId="reg-room"
                                                 id="select-room"
@@ -264,7 +264,7 @@ export default function AdminProducts() {
                                     required
                                     id="reg-imageURL"
                                     label="Image URL"
-                                    type="text"
+                                    type="url"
                                     variant="standard"
                                     value = {imageURL}
                                     onChange = {e => setImageURL(e.target.value)}
@@ -276,7 +276,7 @@ export default function AdminProducts() {
                                     required
                                     id="reg-imageURL"
                                     label="Image Room URL"
-                                    type="text"
+                                    type="url"
                                     variant="standard"
                                     value = {imageRoomURL}
                                     onChange = {e => setImageRoomURL(e.target.value)}

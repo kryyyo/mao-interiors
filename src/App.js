@@ -17,6 +17,7 @@ import AdminOrder from './pages/AdminOrder';
 import AdminProducts from './pages/AdminProducts';
 import AddProduct from './pages/AddProduct';
 import Box from '@mui/material/Box';
+import EditProduct from './pages/EditProduct';
 
 function App() {
 
@@ -79,11 +80,12 @@ function App() {
                 <Route exact path="/register" element={<Register />}/>
                 <Route exact path="/dashboard" element={<Dashboard />}/>
                 <Route exact path="*" element={<Error />}/>
-                <Route exact path="/admin/users" element={<AdminUser />}/>
-                <Route exact path="/admin/users/:userId" element={<AdminUserOrder />}/>
-                <Route exact path="/admin/orders" element={<AdminOrder />}/>
-                <Route exact path="/admin/products" element={<AdminProducts />}/>
-                <Route exact path="/admin/products/add" element={<AddProduct />}/>
+                <Route exact path="dashboard/admin/users" element={<AdminUser />}/>
+                <Route exact path="dashboard/admin/users/:userId" element={<AdminUserOrder />}/>
+                <Route exact path="dashboard/admin/orders" element={<AdminOrder />}/>
+                <Route exact path="dashboard/admin/products" element={<AdminProducts />}/>
+                <Route exact path="dashboard/admin/products/add" element={<AddProduct />}/>
+                <Route exact path="dashboard/admin/products/edit/:productId" element={<EditProduct />}/>
               </Routes>
             </Box>
             <Footer />

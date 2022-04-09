@@ -240,7 +240,7 @@ export default function UserCard() {
                                         display: "flex"
                                     }}
                                 >
-                                    <Typography variant="body2"><Link component={RouterLink} to={`/admin/users/${user._id}`} underline="always">View User Orders</Link></Typography>
+                                    <Typography variant="body2"><Link component={RouterLink} to={`${user._id}`} underline="always">View User Orders</Link></Typography>
                                 </Grid>
                             </Grid>
 

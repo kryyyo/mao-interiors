@@ -26,7 +26,7 @@ export default function CustomizedBadges() {
                   marginRight: 1,
               }}
               component={Link}
-              to="/dashboard"
+              to="dashboard"
           >
               <StyledBadge color="primary">
                   <PersonOutlineIcon />
@@ -39,7 +39,7 @@ export default function CustomizedBadges() {
                   marginRight: 1,
               }}
               component={Link}
-              to="/login"
+              to="login"
           >
               <StyledBadge color="primary">
                   <PersonOutlineIcon />
