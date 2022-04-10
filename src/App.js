@@ -19,6 +19,8 @@ import AddProduct from './pages/AddProduct';
 import Box from '@mui/material/Box';
 import EditProduct from './pages/EditProduct';
 import UserOrder from './pages/UserOrder'
+import Products from './pages/Products';
+import PerProduct from './pages/PerProduct';
 
 function App() {
 
@@ -76,18 +78,24 @@ function App() {
             >
               <Routes>
                 <Route exact path="/"/>
-                <Route exact path="/login" element={<Login />}/>
-                <Route exact path="/logout" element={<Logout />}/>
-                <Route exact path="/register" element={<Register />}/>
-                <Route exact path="/dashboard" element={<Dashboard />}/>
+                <Route exact path="login" element={<Login />}/>
+                <Route exact path="logout" element={<Logout />}/>
+                <Route exact path="register" element={<Register />}/>
+                <Route exact path="dashboard" element={<Dashboard />}/>
                 <Route exact path="*" element={<Error />}/>
+
+                {/* For Admin */}
                 <Route exact path="dashboard/admin/users" element={<AdminUser />}/>
                 <Route exact path="dashboard/admin/users/:userId" element={<AdminUserOrder />}/>
                 <Route exact path="dashboard/admin/orders" element={<AdminOrder />}/>
                 <Route exact path="dashboard/admin/products" element={<AdminProducts />}/>
                 <Route exact path="dashboard/admin/products/add" element={<AddProduct />}/>
                 <Route exact path="dashboard/admin/products/edit/:productId" element={<EditProduct />}/>
-                <Route exact path="dashboard/myorders/" element={<UserOrder />}/>
+
+                {/* For Users */}
+                <Route exact path="dashboard/myorders" element={<UserOrder />}/>
+                <Route exact path="products" element={<Products />}/>
+                <Route exact path="products/:productId" element={<PerProduct />}/>
               </Routes>
             </Box>
             <Footer />
