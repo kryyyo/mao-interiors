@@ -9,7 +9,6 @@ export default function UserProductCard() {
 
     const [products, setProducts] = useState([]);
     
-
     useEffect(() => {
         fetch(`${ process.env.REACT_APP_API_URL }/products/`, {
             headers: {
@@ -28,8 +27,15 @@ export default function UserProductCard() {
                 <Grid item xs={6} sm ={3} key={product._id}>
                     <Link component={RouterLink} to={product._id} underline="none" sx={{color: "#000"}}>
                         <Grid container>
-                            <Grid item xs={12}>
-                                <img src={product.imageURL} alt="product view" style={{width: "100%"}} id={product._id}/>
+                            <Grid item xs={12}
+                                sx={{
+                                    backgroundImage: `url(${product.imageRoomURL})`,
+                                    backgroundRepeat: "no-repeat",
+                                    backgroundPosition: "center",
+                                    backgroundSize: "cover",
+                                }}
+                            >
+                                <Box sx={{'&:hover': {opacity: 0}, width: "100%", height: "100%"}}><img src={product.imageURL} alt="product view" style={{width: "100%", height: "100%"}} id={product._id}/></Box>
                             </Grid>
 
                             <Grid item xs={12} mt={2}>
