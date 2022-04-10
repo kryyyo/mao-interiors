@@ -27,7 +27,7 @@ export default function EditProductCard() {
     const [imageRoomURL, setImageRoomURL] = useState('');
 
     useEffect(() => {
-        fetch(`${ process.env.REACT_APP_API_URL }/products/${productId}`, {
+        fetch(`${ process.env.REACT_APP_API_URL }/products/admin/${productId}`, {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`
             }

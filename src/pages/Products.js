@@ -8,7 +8,6 @@ export default function Products() {
     const {user} = useContext(UserContext)
 
     return (
-        (user.id !== null) ?
         <Grid container>
             {(!user.isAdmin) ?
                 <>
@@ -27,9 +26,5 @@ export default function Products() {
             :
             <Navigate to ="/dashboard" />}
         </Grid>
-        :
-        <Navigate to ="/login" />
-
-        
     )
 }

@@ -9,7 +9,6 @@ export default function PerProduct() {
     const {user} = useContext(UserContext)
 
     return (
-        (user.id !== null) ?
         <Grid container>
             {(!user.isAdmin) ?
                 <>
@@ -23,9 +22,5 @@ export default function PerProduct() {
             :
             <Navigate to ="/dashboard" />}
         </Grid>
-        :
-        <Navigate to ="/login" />
-
-        
     )
 }

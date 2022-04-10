@@ -7,7 +7,7 @@ export default function ProductCard() {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        fetch(`${ process.env.REACT_APP_API_URL }/products/`, {
+        fetch(`${ process.env.REACT_APP_API_URL }/products/admin`, {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`
             }
