@@ -12,7 +12,7 @@ const buttonTexts = [
     {
         title: "My Orders",
         subtitle: "Check your orders",
-        link: "/orders",
+        link: "myorders/",
     },
     {
         title: "Products",

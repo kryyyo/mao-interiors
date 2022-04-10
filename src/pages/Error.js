@@ -8,12 +8,12 @@ export default function Error() {
 
     return (
         <Box
-            m={36}
+            mx="auto"
             sx={{
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "center",
-                alignItems: "flex-start",
+                alignItems: "center",
             }}
         >
             <Typography

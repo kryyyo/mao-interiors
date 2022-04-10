@@ -1,5 +1,9 @@
 const roomCategories = [
     {
+        key: 0,
+        name: "All Rooms",
+    },
+    {
         key: 1,
         name: "Living Room",
     },

@@ -18,6 +18,7 @@ import AdminProducts from './pages/AdminProducts';
 import AddProduct from './pages/AddProduct';
 import Box from '@mui/material/Box';
 import EditProduct from './pages/EditProduct';
+import UserOrder from './pages/UserOrder'
 
 function App() {
 
@@ -86,6 +87,7 @@ function App() {
                 <Route exact path="dashboard/admin/products" element={<AdminProducts />}/>
                 <Route exact path="dashboard/admin/products/add" element={<AddProduct />}/>
                 <Route exact path="dashboard/admin/products/edit/:productId" element={<EditProduct />}/>
+                <Route exact path="dashboard/myorders/" element={<UserOrder />}/>
               </Routes>
             </Box>
             <Footer />

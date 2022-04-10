@@ -1,5 +1,9 @@
 const productCategories = [
     {
+        key: 0,
+        name: "All Products",
+    },
+    {
         key: 1,
         name: "Tables & Desk",
     },
