@@ -2,8 +2,49 @@ import { Grid, Typography } from "@mui/material"
 import CartCards from "./CartCards"
 import { Button } from "@mui/material"
 import { Box } from "@mui/system"
+import Swal from "sweetalert2"
 
 export default function CartedProducts() {
+
+    function emptyCart() {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "Cart will be emptied!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#990f02',
+            cancelButtonColor: '#4b5320',
+            confirmButtonText: 'Yes, empty!'
+            }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`${ process.env.REACT_APP_API_URL }/users/cart`,{
+                    method: 'DELETE',
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem('token')}`
+                    },
+                })
+                .then(res => res.json())
+                .then(data => {
+                    if (data) {
+                        Swal.fire(
+                            'All set!',
+                            'Cart Emptied',
+                            'success'
+                        )
+                    } else {
+                        Swal.fire({
+                            title: "Something went wrong!",
+                            icon: "error", 
+                            text: "Please try again."
+                        })
+                    }
+                })
+                
+            }
+            })
+    }
+
+
     return (
         <Grid item xs={12}>
             <Grid container justifyContent="center" alignItems="center">
@@ -18,7 +59,7 @@ export default function CartedProducts() {
                 </Grid>
 
                 <Grid item xs={12} px={5} pb={5}>
-                    <Button variant="text" onClick={(e) => e.preventDefault()} sx={{color: "#990f02"}}>Empty My Cart</Button>
+                    <Button variant="text" onClick={() => emptyCart()} sx={{color: "#990f02"}}>Empty My Cart</Button>
                 </Grid> 
 
                 <Grid item xs={12} px={5} pb={5} alignSelf="flex-end">
