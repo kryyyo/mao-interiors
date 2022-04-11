@@ -1,12 +1,8 @@
 import {ListItemButton, ListItemText, Typography, } from "@mui/material"
 import { Link } from "react-router-dom"
-import UserContext from "../UserContext"
-import { useContext } from "react"
 
 
 export default function SidebarCategory({props}) {
-    const {user} = useContext(UserContext)
-
     return (
         props.map((category) => {
             return (

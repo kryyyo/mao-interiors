@@ -1,10 +1,12 @@
 import { Grid, Typography, Box, Button } from "@mui/material";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { FormControl, MenuItem, InputLabel, Select } from "@mui/material";
 
 export default function PerProductCard() {
 
     const [products, setProducts] = useState([]);
+    const [quantity, setQuantity] = useState();
 
     const { productId } = useParams()
 
@@ -54,22 +56,48 @@ export default function PerProductCard() {
                             </Grid>
 
                             <Grid item xs={12} mb={2}>
-                                <Button
-                                    id="addtocart-button"
-                                    type="submit"
-                                    variant="contained"
-                                    disableElevation
-                                    sx={{
-                                        color: "#f1f1f1",
-                                        backgroundColor: "#000",
-                                        borderRadius: 6,
-                                        padding: 1,
-                                        paddingX: 6,
-                                        width: "100%"
-                                    }}
-                                >
-                                    Add to Cart
-                                </Button>
+                                <Grid container spacing={2} alignItems="center">
+                                    <Grid item xs={3}>
+                                        <FormControl fullWidth>
+                                            <InputLabel id="quantity">Qty</InputLabel>
+                                            <Select
+                                                labelId="quantity"
+                                                id="quantity"
+                                                value={quantity}
+                                                label="Qty"
+                                                onChange={(e) => setQuantity(e.target.value)}
+                                            >
+                                                <MenuItem value={1}>1</MenuItem>
+                                                <MenuItem value={2}>2</MenuItem>
+                                                <MenuItem value={3}>3</MenuItem>
+                                                <MenuItem value={4}>4</MenuItem>
+                                                <MenuItem value={5}>5</MenuItem>
+                                                <MenuItem value={6}>6</MenuItem>
+                                            </Select>
+                                        </FormControl>
+                                    </Grid>
+
+                                    <Grid item xs={9}>
+                                        <Button
+                                            id="addtocart-button"
+                                            type="submit"
+                                            variant="contained"
+                                            disableElevation
+                                            sx={{
+                                                color: "#f1f1f1",
+                                                backgroundColor: "#000",
+                                                borderRadius: 6,
+                                                padding: 1,
+                                                paddingX: 6,
+                                                width: "100%"
+                                            }}
+                                        >
+                                            Add to Cart
+                                        </Button>
+                                    </Grid>
+                                </Grid>
+
+                                
                             </Grid>
                         </Grid>
                     </Grid>
