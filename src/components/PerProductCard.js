@@ -96,8 +96,6 @@ export default function PerProductCard() {
                                         </Button>
                                     </Grid>
                                 </Grid>
-
-                                
                             </Grid>
                         </Grid>
                     </Grid>
