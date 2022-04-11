@@ -341,6 +341,7 @@ export default function EditProductCard() {
                                             <Select
                                                 labelId="reg-category"
                                                 id="select-category"
+                                                defaultValue={product.category}
                                                 value = {category}
                                                 onChange = {e => setCategory(e.target.value)}
                                                 label="Category"
@@ -366,6 +367,7 @@ export default function EditProductCard() {
                                             <Select
                                                 labelId="reg-room"
                                                 id="select-room"
+                                                defaultValue={product.room}
                                                 value = {room}
                                                 onChange = {e => setRoom(e.target.value)}
                                                 label="Room"

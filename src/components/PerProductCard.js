@@ -66,6 +66,7 @@ export default function PerProductCard() {
                                                 value={quantity}
                                                 label="Qty"
                                                 onChange={(e) => setQuantity(e.target.value)}
+                                                defaultValue={1}
                                             >
                                                 <MenuItem value={1}>1</MenuItem>
                                                 <MenuItem value={2}>2</MenuItem>
