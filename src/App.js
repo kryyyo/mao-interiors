@@ -21,6 +21,7 @@ import EditProduct from './pages/EditProduct';
 import UserOrder from './pages/UserOrder'
 import Products from './pages/Products';
 import PerProduct from './pages/PerProduct';
+import CartPage from './pages/CartPage';
 
 function App() {
 
@@ -96,6 +97,7 @@ function App() {
                 <Route exact path="dashboard/myorders" element={<UserOrder />}/>
                 <Route exact path="products" element={<Products />}/>
                 <Route exact path="products/:productId" element={<PerProduct />}/>
+                <Route exact path="cart" element={<CartPage />}/>
               </Routes>
             </Box>
             <Footer />

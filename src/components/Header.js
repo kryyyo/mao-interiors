@@ -4,8 +4,11 @@ import UserBadge from './UserBadge'
 import ShoppingCartBadge from './ShoppingCartBadge';
 import SearchBar from "./SearchBar";
 import { Link } from "react-router-dom";
+import UserContext from "../UserContext";
+import { useContext } from "react";
 
 export default function Header() {
+    const {user} = useContext(UserContext);
 
     const theme = useTheme(); 
     const isMatch = useMediaQuery(theme.breakpoints.down('sm'));
@@ -25,45 +28,77 @@ export default function Header() {
                             flexWrap: "wrap",
                         }}
                     >
-                        <Box
-                            sx={{
-                                marginRight: 2
-                            }}
-                        >
-                            <DrawerComponent />
-                        </Box>
-                        <Box
-                            sx={{
-                                marginRight: 2
-                            }}
-                        >
-                            <Box
-                                component={Link}
-                                to="/"
-                            >
-                                <img 
-                                    src="https://i.imgur.com/cUq4nbL.png" 
-                                    alt="logo"
-                                    width="64px"
-                                />
-                            </Box>
-                        </Box>
-                        <Box 
-                            sx={{
-                                marginLeft: "auto",
-                                display: "flex",
-                            }}
-                        >
-                            <UserBadge />
-                            <ShoppingCartBadge />
-                        </Box>
-                        <Box
-                            sx={{
-                                flexGrow: 1,
-                            }}
-                        >
-                            <SearchBar />
-                        </Box>
+                        {
+                            user.isAdmin ?
+                            <>
+                                <Box
+                                    sx={{
+                                        marginRight: 2
+                                    }}
+                                >
+                                    <Box
+                                        component={Link}
+                                        to="/"
+                                    >
+                                        <img 
+                                            src="https://i.imgur.com/cUq4nbL.png" 
+                                            alt="logo"
+                                            width="64px"
+                                        />
+                                    </Box>
+                                </Box>
+                                <Box 
+                                    sx={{
+                                        marginLeft: "auto",
+                                        display: "flex",
+                                    }}
+                                >
+                                    <UserBadge />
+                                </Box>
+                            </>
+                            :
+                            <>
+                                <Box
+                                    sx={{
+                                        marginRight: 2
+                                    }}
+                                >
+                                    <DrawerComponent />
+                                </Box>
+                                <Box
+                                    sx={{
+                                        marginRight: 2
+                                    }}
+                                >
+                                    <Box
+                                        component={Link}
+                                        to="/"
+                                    >
+                                        <img 
+                                            src="https://i.imgur.com/cUq4nbL.png" 
+                                            alt="logo"
+                                            width="64px"
+                                        />
+                                    </Box>
+                                </Box>
+                                <Box 
+                                    sx={{
+                                        marginLeft: "auto",
+                                        display: "flex",
+                                    }}
+                                >
+                                    <UserBadge />
+                                    <ShoppingCartBadge />
+                                </Box>
+                                <Box
+                                    sx={{
+                                        flexGrow: 1,
+                                    }}
+                                >
+                                    <SearchBar />
+                                </Box>
+                            </>
+                        }
                     </Box>
                 )
                 :
@@ -77,48 +112,81 @@ export default function Header() {
                             borderColor: 'grey.500'
                         }}
                     >
-                        <Box
-                            sx={{
-                                marginRight: 2
-                            }}
-                        >
-                            <DrawerComponent />
-                        </Box>
-                        <Box
-                            sx={{
-                                marginRight: 2
-                            }}
-                        >
-                            <Box
-                                component={Link}
-                                to="/"
-                            >
-                                <img 
-                                    src="https://i.imgur.com/cUq4nbL.png" 
-                                    alt="logo"
-                                    width="100px"
-                                    height="auto"
-                                />
-                            </Box>
-                        </Box>
-                        <Box
-                            sx={{
-                                flexGrow: 1,
-                                marginRight: 2
-                            }}
-                        
-                        >
-                            <SearchBar />
-                        </Box>
-                        <Box 
-                            sx={{
-                                marginLeft: "auto",
-                                display: "flex",
-                            }}
-                        >
-                            <UserBadge />
-                            <ShoppingCartBadge />
-                        </Box>
+                        {
+                            user.isAdmin ? 
+                            <>
+                                <Box
+                                    sx={{
+                                        marginRight: 2
+                                    }}
+                                >
+                                    <Box
+                                        component={Link}
+                                        to="/"
+                                    >
+                                        <img 
+                                            src="https://i.imgur.com/cUq4nbL.png" 
+                                            alt="logo"
+                                            width="100px"
+                                            height="auto"
+                                        />
+                                    </Box>
+                                </Box>
+                                <Box 
+                                    sx={{
+                                        marginLeft: "auto",
+                                        display: "flex",
+                                    }}
+                                >
+                                    <UserBadge />
+                                </Box>
+                            </>
+                            :
+                            <>
+                                <Box
+                                    sx={{
+                                        marginRight: 2
+                                    }}
+                                >
+                                    <DrawerComponent />
+                                </Box>
+                                <Box
+                                    sx={{
+                                        marginRight: 2
+                                    }}
+                                >
+                                    <Box
+                                        component={Link}
+                                        to="/"
+                                    >
+                                        <img 
+                                            src="https://i.imgur.com/cUq4nbL.png" 
+                                            alt="logo"
+                                            width="100px"
+                                            height="auto"
+                                        />
+                                    </Box>
+                                </Box>
+                                <Box
+                                    sx={{
+                                        flexGrow: 1,
+                                        marginRight: 2
+                                    }}
+                                
+                                >
+                                    <SearchBar />
+                                </Box>
+                                <Box 
+                                    sx={{
+                                        marginLeft: "auto",
+                                        display: "flex",
+                                    }}
+                                >
+                                    <UserBadge />
+                                    <ShoppingCartBadge />
+                                </Box>
+                            </>
+                        }
                     </Box>
                 )
             }

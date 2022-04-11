@@ -95,19 +95,17 @@ export default function PerProductCard() {
                             <Grid item xs={12} sm={6}>
                                 <img src={product.imageRoomURL} alt="mycathover" style={{width: "100%"}}/>
                             </Grid>
-                            <Grid item xs={12} sm={12}>
-                                <Typography variant="body1">{product.description}</Typography>
-                            </Grid>
                         </Grid>
                     </Grid>
                     
-                    <Grid item xs={12} sm={4} p={3}>
+                    <Grid item xs={12} sm={12} md={4} p={3}>
                         <Grid container spacing={1} alignItems="center" justifyContent="center">
                             <Grid item xs={12} borderBottom={1} borderColor='grey.500' mb={2} pb={3}>
                                 <Grid container justifyContent="center">
                                     <Grid item xs={9} sm={8}>
                                         <Typography variant="h6">{product.name}</Typography>
                                         <Typography variant="body2">{product.category}</Typography>
+                                        <Typography variant="body1">{product.description}</Typography>
                                     </Grid>
 
                                     <Grid item xs={3} sm={3}>
