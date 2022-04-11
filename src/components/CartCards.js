@@ -5,6 +5,7 @@ import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import { IconButton } from "@mui/material";
 import { Typography, Box } from "@mui/material";
 import EditIcon from '@mui/icons-material/Edit';
+import Swal from "sweetalert2";
 
 export default function CartCards() {
     const [products, setProducts] = useState([]);
@@ -20,35 +21,114 @@ export default function CartCards() {
             setProducts(data)
         })
     });
+    
+    function removeItem(product) {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "Product will be deleted and cannot be retrieved!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#990f02',
+            cancelButtonColor: '#4b5320',
+            confirmButtonText: 'Yes, delete!'
+            }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`${ process.env.REACT_APP_API_URL }/users/${product.productId}/cart`,{
+                    method: 'DELETE',
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem('token')}`
+                    },
+                })
+                Swal.fire(
+                'All set!',
+                'Order deleted!',
+                'success'
+                )
+            }
+            })
+    }
+
+    async function editItem(product) {
+        const { value: number } = await Swal.fire({
+            input: 'number',
+            inputLabel: 'Modify Quantity',
+            inputPlaceholder: 'Enter the quantity'
+          })
+          
+          if (number) {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "Quantity will be modified after this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#990f02',
+                cancelButtonColor: '#4b5320',
+                confirmButtonText: 'Yes, modify!'
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    fetch(`${ process.env.REACT_APP_API_URL }/users/${product.productId}/cart`,{
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            Authorization: `Bearer ${localStorage.getItem('token')}`
+                        },
+                        body: JSON.stringify({
+                            quantity: number
+                        })
+                    })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data) {
+                            Swal.fire(
+                                'All set!',
+                                'Quantity modified!',
+                                'success'
+                            )
+                        } else {
+                            Swal.fire({
+                                title: "Something went wrong!",
+                                icon: "error", 
+                                text: "Please try again."
+                            })
+                        }
+                    })
+                    
+                }
+                })
+          }
+    }
 
     return (
         products.map((product) => {
             return (
-                <Grid item xs={12} borderBottom={1} py={5} borderColor="grey.500">
-                    <Grid container justifyContent="center" alignItems="flex-start" spacing={3}>
-                        <Grid item xs={5} sm={2}>
+                <Grid item xs={12} borderBottom={1} py={5} borderColor="grey.500" key={product.productId}>
+                    <Grid container justifyContent="center" alignItems="flex-start" spacing={2}>
+                        <Grid item xs={12} sm={3} md={2}>
                             <IconButton
                                 sx={{ color: "#990f02"}}
+                                onClick= {() => removeItem(product)}
                             >
                                 <DeleteOutlineIcon />
                             </IconButton>
 
                             <IconButton
                                 sx={{ color: "#4b5320"}}
+                                onClick= {() => editItem(product)}
                             >
                                 <EditIcon />
+                                
                             </IconButton>
 
                             <TextField
                                 disabled
                                 id="outlined-disabled"
                                 label="Qty"
-                                defaultValue={product.quantity}
+                                value={product.quantity}
                                 sx={{width: "25%"}}
                             />
                         </Grid>
 
-                        <Grid item xs={7} sm={5}>
+                        <Grid item xs={12} sm={4} md={5}>
                             <img src="https://placekitten.com/300/300" alt="mycathover" style={{width: "100%"}}/>
                         </Grid>
                         
