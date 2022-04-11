@@ -3,8 +3,11 @@ import CartCards from "./CartCards"
 import { Button } from "@mui/material"
 import { Box } from "@mui/system"
 import Swal from "sweetalert2"
+import { useState, useEffect } from "react"
 
 export default function CartedProducts() {
+
+    const [total, setTotal] = useState();
 
     function emptyCart() {
         Swal.fire({
@@ -44,6 +47,20 @@ export default function CartedProducts() {
             })
     }
 
+    useEffect(() => {
+        fetch(`${ process.env.REACT_APP_API_URL }/users/cart/total`, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+            }
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data !== false) {
+                setTotal(data.totalPrice)
+            }
+        })
+    });
+
 
     return (
         <Grid item xs={12}>
@@ -65,7 +82,7 @@ export default function CartedProducts() {
                 <Grid item xs={12} px={5} pb={5} alignSelf="flex-end">
                     <Grid container justifyContent="space-between">
                         <Typography variant="h5"><b>Total for this order:</b></Typography>
-                        <Typography variant="h4"><Box sx={{display: "inline", fontSize: "0.5em"}}>&#8369;</Box><strong>10000</strong></Typography>
+                        <Typography variant="h4"><Box sx={{display: "inline", fontSize: "0.5em"}}>&#8369;</Box><strong>{total}</strong></Typography>
                     </Grid>
                 </Grid>
 
