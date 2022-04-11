@@ -13,8 +13,8 @@ export default function PerProduct() {
             {(!user.isAdmin) ?
                 <>
                 <Grid container justifyContent="center">
-                    <Grid item xs={1}><BackButton props={{link: "/products"}}/></Grid>
-                    <Grid item xs={11} p={3}>
+                    <Grid item xs={12}><BackButton props={{link: "/products"}}/></Grid>
+                    <Grid item xs={12} p={3}>
                         <PerProductCard />
                     </Grid>
                 </Grid>

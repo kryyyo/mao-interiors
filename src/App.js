@@ -22,6 +22,7 @@ import UserOrder from './pages/UserOrder'
 import Products from './pages/Products';
 import PerProduct from './pages/PerProduct';
 import CartPage from './pages/CartPage';
+import CheckOut from './pages/CheckOut';
 
 function App() {
 
@@ -98,6 +99,7 @@ function App() {
                 <Route exact path="products" element={<Products />}/>
                 <Route exact path="products/:productId" element={<PerProduct />}/>
                 <Route exact path="cart" element={<CartPage />}/>
+                <Route exact path="cart/checkout" element={<CheckOut />}/>
               </Routes>
             </Box>
             <Footer />

@@ -38,7 +38,7 @@ export default function Header() {
                                 >
                                     <Box
                                         component={Link}
-                                        to="/"
+                                        to="/dashboard"
                                     >
                                         <img 
                                             src="https://i.imgur.com/cUq4nbL.png" 
@@ -122,7 +122,7 @@ export default function Header() {
                                 >
                                     <Box
                                         component={Link}
-                                        to="/"
+                                        to="/dashboard"
                                     >
                                         <img 
                                             src="https://i.imgur.com/cUq4nbL.png" 

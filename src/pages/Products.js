@@ -12,11 +12,11 @@ export default function Products() {
             {(!user.isAdmin) ?
                 <>
                 <Grid container>
-                    <Grid item xs={12} p={5}>
+                    <Grid item xs={12} p={3}>
                         <Typography variant="h5"><b>All Products</b></Typography>
                     </Grid>
 
-                    <Grid item xs={12} p={5}>
+                    <Grid item xs={12} p={3}>
                         <Grid container spacing={3}>
                             <UserProductCard />
                         </Grid>
