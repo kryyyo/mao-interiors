@@ -108,7 +108,6 @@ export default function UserProductCard() {
                                             sx={{color: "#000"}}
                                             onClick={
                                                 (e) => {e.preventDefault(); quickAddToCart(product)}
-                                            
                                             }
                                         >  
                                             <AddShoppingCartIcon />

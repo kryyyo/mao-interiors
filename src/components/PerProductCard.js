@@ -2,13 +2,17 @@ import { Grid, Typography, Box, Button } from "@mui/material";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { FormControl, MenuItem, InputLabel, Select } from "@mui/material";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
+
 
 export default function PerProductCard() {
 
     const [products, setProducts] = useState([]);
-    const [quantity, setQuantity] = useState();
+    const [quantity, setQuantity] = useState(1);
 
     const { productId } = useParams()
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetch(`${ process.env.REACT_APP_API_URL }/products/${productId}`, {
@@ -21,6 +25,63 @@ export default function PerProductCard() {
             setProducts(data)
         })
     });
+
+    function addToCart(product) {
+        if (product.stocks > 0) {
+            fetch(`${ process.env.REACT_APP_API_URL }/users/${productId}/cartproducts`, {
+                method: 'POST',
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('token')}`,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    quantity: quantity
+                })
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.product === `Added to Cart`) {
+                    Swal.fire({
+                        title: "Item added to cart!", 
+                        icon: "success",
+                        text: "You have successfully added the item!"
+                    })
+                } else if (data.product === `Product already exists. Quantity Added!`) {
+                    Swal.fire({
+                        title: "Item already in cart. Added quantity to the item!", 
+                        icon: "success",
+                        text: "You have successfully added quantity!"
+                    })
+                } else if (data.auth === "failed") {
+                    Swal.fire({
+                        title: 'You are not logged in!',
+                        text: "Please login to add something to your cart",
+                        icon: 'error',
+                        showCancelButton: true,
+                        confirmButtonColor: '#4b5320',
+                        cancelButtonColor: '#990f02',
+                        confirmButtonText: 'Go to Login'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            navigate("/login")
+                        }
+                    })
+                } else {
+                    Swal.fire({
+                        title: "Something went wrong!",
+                        icon: "error", 
+                        text: "Please try again."
+                    })
+                }
+            })
+        } else {
+            Swal.fire({
+                title: "Sorry! Product already out of stock",
+                icon: "error", 
+                text: "Updating your page..."
+            })
+        }
+    }
     
     return (
         products.map((product) => {
@@ -66,7 +127,6 @@ export default function PerProductCard() {
                                                 value={quantity}
                                                 label="Qty"
                                                 onChange={(e) => setQuantity(e.target.value)}
-                                                defaultValue={1}
                                             >
                                                 <MenuItem value={1}>1</MenuItem>
                                                 <MenuItem value={2}>2</MenuItem>
@@ -92,6 +152,7 @@ export default function PerProductCard() {
                                                 paddingX: 6,
                                                 width: "100%"
                                             }}
+                                            onClick = {(e) => {e.preventDefault(); addToCart(product)}}
                                         >
                                             Add to Cart
                                         </Button>

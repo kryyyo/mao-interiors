@@ -36,7 +36,7 @@ export default function EditProductCard() {
         .then(data => {
             setProduct(data)
         })
-    },[]);
+    },[productId]);
 
     useEffect(() => {
         setProductName(product.name)
