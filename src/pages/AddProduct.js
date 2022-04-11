@@ -183,10 +183,13 @@ export default function AdminProducts() {
                                             <MenuItem value="">
                                                 <em>None</em>
                                             </MenuItem>
-                                            {/* We can loop for this after we finalize categories */}
-                                            <MenuItem value={"Bed"}>Bed</MenuItem>
-                                            <MenuItem value={"Sofa"}>Sofa</MenuItem>
-                                            <MenuItem value={"Chair"}>Chair</MenuItem>
+                                                <MenuItem value={"Table"}>Table</MenuItem>
+                                                <MenuItem value={"Sofa"}>Sofa</MenuItem>
+                                                <MenuItem value={"Lighting"}>Lighting</MenuItem>
+                                                <MenuItem value={"Bed"}>Bed</MenuItem>
+                                                <MenuItem value={"Shelves"}>Shelves</MenuItem>
+                                                <MenuItem value={"Chair"}>Chair</MenuItem>
+                                                <MenuItem value={"Decor"}>Decor</MenuItem>
                                             </Select>
                                         </FormControl>
                                     </Grid>
@@ -209,9 +212,12 @@ export default function AdminProducts() {
                                                 <em>None</em>
                                             </MenuItem>
                                             {/* We can loop for this after we finalize room */}
-                                            <MenuItem value={"Bedroom"}>Bedroom</MenuItem>
-                                            <MenuItem value={"Living Room"}>Living room</MenuItem>
-                                            <MenuItem value={"Chair"}>Chair</MenuItem>
+                                                <MenuItem value={"Bedroom"}>Bedroom</MenuItem>
+                                                <MenuItem value={"Living Area"}>Living Area</MenuItem>
+                                                <MenuItem value={"Dining"}>Dining</MenuItem>
+                                                <MenuItem value={"Bathroom"}>Bathroom</MenuItem>
+                                                <MenuItem value={"Kitchen"}>Kitchen</MenuItem>
+                                                <MenuItem value={"Home Office"}>Home Office</MenuItem>
                                             </Select>
                                         </FormControl>
                                     </Grid>
