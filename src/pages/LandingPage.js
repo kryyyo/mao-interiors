@@ -8,21 +8,22 @@ export default function LandingPage() {
     return (
         <Grid container>
             <Grid item xs={12}>
-                <Grid container justifyContent="center">
+                <Typography variant="h5" p={3}><b>Welcome to Mao Interiors</b></Typography>
+                <Grid container justifyContent="center" px={3}>
                     <SwipeableTextMobileStepper />
                 </Grid>
             </Grid>
 
-            <Grid item xs={12}>
+            <Grid item xs={12} p={3}>
                 <Grid container>
-                    <Typography variant="h5"><b>Shop furnitures and accessories</b></Typography>
+                    <Typography variant="h5" py={3}><b>Shop furnitures and accessories</b></Typography>
                     <ButtonGroupLanding />
                 </Grid>
             </Grid>
 
-            <Grid item xs={12} pt={3}>
+            <Grid item xs={12} p={3}>
                 <Grid container>
-                    <Typography variant="h5"><b>Sample products in the room</b></Typography>
+                    <Typography variant="h5" py={3}><b>Sample products in the room</b></Typography>
                     <MasonryLanding />
                 </Grid>
             </Grid>
