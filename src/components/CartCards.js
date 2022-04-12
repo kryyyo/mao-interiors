@@ -185,7 +185,7 @@ export default function CartCards() {
                             </Grid>
     
                             <Grid item xs={12} sm={4} md={5}>
-                                <img src="https://placekitten.com/300/300" alt="mycathover" style={{width: "100%"}}/>
+                                <img src={product.imageURL} alt="product view" style={{width: "100%"}}/>
                             </Grid>
                             
                             <Grid item xs={12} sm={5}>
