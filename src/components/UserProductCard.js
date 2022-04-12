@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
-
+import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 
 
 export default function UserProductCard() {
@@ -78,48 +78,55 @@ export default function UserProductCard() {
     }
 
     return (
-        products.map(product => {
-            return (
-                <Grid item xs={6} sm ={3} key={product._id}>
-                    <Link component={RouterLink} to={product._id} underline="none" sx={{color: "#000"}}>
-                        <Grid container>
-                            <Grid item xs={12}
-                                sx={{
-                                    backgroundImage: `url(${product.imageRoomURL})`,
-                                    backgroundRepeat: "no-repeat",
-                                    backgroundPosition: "center",
-                                    backgroundSize: "cover",
-                                }}
-                            >
-                                <Box sx={{'&:hover': {opacity: 0}, width: "100%", height: "100%"}}><img src={product.imageURL} alt="product view" style={{width: "100%", height: "100%"}} id={product._id}/></Box>
-                            </Grid>
-
-                            <Grid item xs={12} mt={2}>
-                                <Grid container>
-                                    <Grid item xs={10}>
-                                        <Typography variant="h6" sx={{'&:hover': {textDecoration: "underline"}}}>{product.name}</Typography>
-                                        <Typography variant="body2">{product.category}</Typography>
-                                        <Typography variant="h5"><Box sx={{display: "inline", fontSize: "0.5em"}}>&#8369;</Box><strong>{product.unitPrice}</strong></Typography>
+        <>
+        {
+            (products.length > 0) ?
+            products.map(product => {
+                return (
+                    <Grid item xs={6} sm ={3} key={product._id}>
+                        <Link component={RouterLink} to={product._id} underline="none" sx={{color: "#000"}}>
+                            <Grid container>
+                                <Grid item xs={12}
+                                    sx={{
+                                        backgroundImage: `url(${product.imageRoomURL})`,
+                                        backgroundRepeat: "no-repeat",
+                                        backgroundPosition: "center",
+                                        backgroundSize: "cover",
+                                    }}
+                                >
+                                    <Box sx={{'&:hover': {opacity: 0}, width: "100%", height: "100%"}}><img src={product.imageURL} alt="product view" style={{width: "100%", height: "100%"}} id={product._id}/></Box>
+                                </Grid>
+    
+                                <Grid item xs={12} mt={2}>
+                                    <Grid container>
+                                        <Grid item xs={10}>
+                                            <Typography variant="h6" sx={{'&:hover': {textDecoration: "underline"}}}>{product.name}</Typography>
+                                            <Typography variant="body2">{product.category}</Typography>
+                                            <Typography variant="h5"><Box sx={{display: "inline", fontSize: "0.5em"}}>&#8369;</Box><strong>{product.unitPrice}</strong></Typography>
+                                        </Grid>
+    
+                                        <Grid item xs={1} alignSelf="flex-end" mr={1}>
+                                            <IconButton
+                                                aria-label="add to shopping cart"
+                                                sx={{color: "#000"}}
+                                                onClick={
+                                                    (e) => {e.preventDefault(); quickAddToCart(product)}
+                                                }
+                                            >  
+                                                <AddShoppingCartIcon />
+                                            </IconButton>
+                                        </Grid> 
                                     </Grid>
-
-                                    <Grid item xs={1} alignSelf="flex-end" mr={1}>
-                                        <IconButton
-                                            aria-label="add to shopping cart"
-                                            sx={{color: "#000"}}
-                                            onClick={
-                                                (e) => {e.preventDefault(); quickAddToCart(product)}
-                                            }
-                                        >  
-                                            <AddShoppingCartIcon />
-                                        </IconButton>
-                                    </Grid> 
                                 </Grid>
                             </Grid>
-                        </Grid>
-                    </Link>
-                </Grid>
-            )
-        })
+                        </Link>
+                    </Grid>
+                )
+            })
+            :
+            <Grid item sx={{display: "flex"}}><ErrorOutlineIcon sx={{mr: 2, color: "#990f02"}}/><Typography variant="body1">Empty Products!</Typography></Grid>
+        }
+        </>
     )
 }
 
