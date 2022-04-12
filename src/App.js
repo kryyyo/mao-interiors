@@ -23,6 +23,7 @@ import Products from './pages/Products';
 import PerProduct from './pages/PerProduct';
 import CartPage from './pages/CartPage';
 import CheckOut from './pages/CheckOut';
+import LandingPage from './pages/LandingPage';
 
 function App() {
 
@@ -79,7 +80,7 @@ function App() {
               }}
             >
               <Routes>
-                <Route exact path="/"/>
+                <Route exact path="/" element={<LandingPage />}/>
                 <Route exact path="login" element={<Login />}/>
                 <Route exact path="logout" element={<Logout />}/>
                 <Route exact path="register" element={<Register />}/>
