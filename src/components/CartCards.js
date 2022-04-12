@@ -58,45 +58,53 @@ export default function CartCards() {
           })
           
           if (number) {
-            Swal.fire({
-                title: 'Are you sure?',
-                text: "Quantity will be modified after this!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#990f02',
-                cancelButtonColor: '#4b5320',
-                confirmButtonText: 'Yes, modify!'
-                }).then((result) => {
-                if (result.isConfirmed) {
-                    fetch(`${ process.env.REACT_APP_API_URL }/users/${product.productId}/cart`,{
-                        method: 'PUT',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            Authorization: `Bearer ${localStorage.getItem('token')}`
-                        },
-                        body: JSON.stringify({
-                            quantity: number
-                        })
-                    })
-                    .then(res => res.json())
-                    .then(data => {
-                        if (data) {
-                            Swal.fire(
-                                'All set!',
-                                'Quantity modified!',
-                                'success'
-                            )
-                        } else {
-                            Swal.fire({
-                                title: "Something went wrong!",
-                                icon: "error", 
-                                text: "Please try again."
+            if (number > 0) {
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "Quantity will be modified after this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#990f02',
+                    cancelButtonColor: '#4b5320',
+                    confirmButtonText: 'Yes, modify!'
+                    }).then((result) => {
+                    if (result.isConfirmed) {
+                        fetch(`${ process.env.REACT_APP_API_URL }/users/${product.productId}/cart`,{
+                            method: 'PUT',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                Authorization: `Bearer ${localStorage.getItem('token')}`
+                            },
+                            body: JSON.stringify({
+                                quantity: number
                             })
-                        }
-                    })
-                    
-                }
+                        })
+                        .then(res => res.json())
+                        .then(data => {
+                            if (data) {
+                                Swal.fire(
+                                    'All set!',
+                                    'Quantity modified!',
+                                    'success'
+                                )
+                            } else {
+                                Swal.fire({
+                                    title: "Something went wrong!",
+                                    icon: "error", 
+                                    text: "Please try again."
+                                })
+                            }
+                        })
+                        
+                    }
                 })
+            } else {
+                Swal.fire({
+                    title: "Cannot have 0 or less",
+                    icon: "error", 
+                    text: "Please try again."
+                })
+            }
           }
     }
 
