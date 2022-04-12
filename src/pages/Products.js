@@ -17,7 +17,7 @@ export default function Products() {
                     </Grid>
 
                     <Grid item xs={12} p={3}>
-                        <Grid container spacing={3}>
+                        <Grid container spacing={4}>
                             <UserProductCard />
                         </Grid>
                     </Grid>

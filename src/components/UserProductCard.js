@@ -100,9 +100,9 @@ export default function UserProductCard() {
                                 <Grid item xs={12} mt={2}>
                                     <Grid container>
                                         <Grid item xs={10}>
-                                            <Typography variant="h6" sx={{'&:hover': {textDecoration: "underline"}}}>{product.name}</Typography>
+                                            <Typography variant="body1" sx={{'&:hover': {textDecoration: "underline"}}}><b>{product.name}</b></Typography>
                                             <Typography variant="body2">{product.category}</Typography>
-                                            <Typography variant="h5"><Box sx={{display: "inline", fontSize: "0.5em"}}>&#8369;</Box><strong>{product.unitPrice}</strong></Typography>
+                                            <Typography variant="h6"><Box sx={{display: "inline", fontSize: "0.5em"}}>&#8369;</Box><strong>{product.unitPrice}</strong></Typography>
                                         </Grid>
     
                                         <Grid item xs={1} alignSelf="flex-end" mr={1}>
