@@ -29,26 +29,50 @@ export default function MasonryLanding() {
 const itemData = [
   {
     img: 'https://i.imgur.com/wP7731m.jpg',
-    title: 'Bedroom',
+    title: 'Room1',
   },
   {
-    img: 'https://i.imgur.com/maenwNf.jpg',
-    title: 'Living Room',
+    img: 'https://i.imgur.com/ht6xa9h.jpg',
+    title: 'Room2',
   },
   {
-    img: 'https://i.imgur.com/e1O05a8.jpg',
-    title: 'Dining Room',
+    img: 'https://i.imgur.com/41HLNss.jpg',
+    title: 'Room3',
+  },
+  {
+    img: 'https://i.imgur.com/pjhpQ6N.jpg',
+    title: 'Room4',
+  },
+  {
+    img: 'https://i.imgur.com/IjVj7d3.jpg',
+    title: 'Room5',
+  },
+  {
+    img: 'https://i.imgur.com/xLKOvn8.jpg',
+    title: 'Room6',
   },
   {
     img: 'https://i.imgur.com/sTIpvWP.jpg',
-    title: 'Living Area',
+    title: 'Room7',
   },
   {
-    img: 'https://i.imgur.com/DpM37Xr.jpg',
-    title: 'Kitchen',
+    img: 'https://i.imgur.com/VJmUgEP.jpg',
+    title: 'Room8',
   },
   {
-    img: 'https://i.imgur.com/o38HPSn.jpg',
-    title: 'Living Area',
+    img: 'https://i.imgur.com/3GNC2In.jpg',
+    title: 'Room9',
+  },
+  {
+    img: 'https://i.imgur.com/uHpTS7K.jpg',
+    title: 'Room10',
+  },
+  {
+    img: 'https://i.imgur.com/Lr3ajZB.jpg',
+    title: 'Room11',
+  },
+  {
+    img: 'https://i.imgur.com/56djLzZ.jpg',
+    title: 'Room12',
   },
 ];

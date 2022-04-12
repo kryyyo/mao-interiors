@@ -4,7 +4,6 @@ import Box from '@mui/material/Box';
 import MobileStepper from '@mui/material/MobileStepper';
 import SwipeableViews from 'react-swipeable-views';
 import { autoPlay } from 'react-swipeable-views-utils';
-import { useNavigate } from 'react-router-dom';
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
@@ -25,13 +24,20 @@ const images = [
     imgPath:
       'https://i.imgur.com/IjVj7d3.jpg',
   },
+  {
+    imgPath:
+      'https://i.imgur.com/41HLNss.jpg',
+  },
+  {
+    imgPath:
+      'https://i.imgur.com/pjhpQ6N.jpg',
+  },
 ];
 
 function SwipeableTextMobileStepper() {
   const theme = useTheme();
   const [activeStep, setActiveStep] = React.useState(0);
   const maxSteps = images.length;
-  const navigate = useNavigate()
 
   const handleStepChange = (step) => {
     setActiveStep(step);
@@ -46,7 +52,7 @@ function SwipeableTextMobileStepper() {
             enableMouseEvents
         >
             {images.map((step, index) => (
-            <div key={step.label} onClick={() => navigate('products')}>
+            <div key={step.label}>
                 {Math.abs(activeStep - index) <= 2 ? (
                 <Box
                     component="img"
@@ -54,7 +60,7 @@ function SwipeableTextMobileStepper() {
                     display: 'flex',
                     overflow: 'hidden',
                     width: '100%',
-                    height: "50vh",
+                    height: "33vw",
                     }}
                     src={step.imgPath}
                     alt={step.label}
